@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+   xmlns:p="http://primefaces.org/ui">
+ <ui:define name="title">commentaires</ui:define>
+ <ui:define name="content">
+
+
+<h:form> 
+    <p:growl id="growl" showDetail="true" sticky="true" style="width:400px;height:300px"/>  
+ 
+    <p:panel header="Growl" style="background-color:#FFEBCD">  
+        <h:panelGrid columns="2" cellpadding="3">  
+            <p:outputLabel for="msg" value="description:" />   
+            <p:inputText id="msg" value="#{growlView.description}" required="true" />  
+        </h:panelGrid>  
+ 
+               <p:commandButton action="#{growlView.addComment()}" value="save"  update="growl" style= "background-color:#00BFF"/>
+               <p:commandButton action="#{growlView.mettreajour()}" value="Update"  update="growl" style= "background-color:#00BFF"/>
+    </p:panel> 
+</h:form>  
+
+
+<h:form> 
+
+    
+   <p:growl id="msgs" showDetail="true" />
+   <p:fieldset legend="commentaires" toggleable="true" toggleSpeed="50">
+        <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+        
+    <p:growl id="growl" showDetail="true" sticky="true"  /> 
+   
+ <c:forEach var="comment" items="#{growlView.commentaires}">
+    <p:panel header="#{comment.utilisateur.lastname}" style="background-color:#FFEBCD">  
+        <h:panelGrid columns="2" cellpadding="5" >  
+            <p:outputLabel  value="description:" />   
+            <p:outputLabel value="#{comment.description}" required="true" />  
+             
+           <p:outputLabel value="#{comment.postdate}" required="true" > 
+            <f:convertDateTime  type="date" pattern="dd/mm/yy"/>
+            </p:outputLabel>
+            
+        </h:panelGrid>  
+        <p:commandButton action="#{growlView.suppEmp(comment.id)}" value="delete"  update="growl" style="background-color:#FF1493"/>
+         <p:commandButton action="#{growlView.modifier(comment)}" value="edit"  update="growl" style="background-color:#FF1493"/>
+
+          
+    </p:panel> 
+    </c:forEach>
+    
+   </p:fieldset>
+</h:form>  
+
+
+
+
+
+
+	 </ui:define>
+ 
+</ui:composition>
+	

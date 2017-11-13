@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+ <ui:define name="title">modifier</ui:define>
+ <ui:define name="content">
+  <h:form id="form">
+  
+  <h:panelGrid  columns="2">
+<h:outputText value="description" />
+<h:inputText value="#{insuranceBean.nom}" />
+<h:outputText value="telephone" />
+<h:inputText value="#{insuranceBean.telephone}" />
+<h:outputText value="email" />
+<h:inputText value="#{insuranceBean.email}" />
+<h:outputText value="adresse" />
+<h:inputText value="#{insuranceBean.adresse}" />
+<h:commandButton id="btn" action="#{insuranceBean.updateIns()}" value="modifier" />
+</h:panelGrid>
+  </h:form>
+ </ui:define>
+</ui:composition>

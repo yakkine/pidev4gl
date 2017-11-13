@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+ <ui:define name="title">AddComment</ui:define>
+ <ui:define name="content">
+<h:form id="form">
+<h:panelGrid  columns="2">
+<h:outputText value="Description" />
+
+ 
+     <h:inputTextarea rows="3" cols="33"  value="#{commentBean.description}"/>
+
+   
+     
+     <h:commandButton id="btn3" action="#{commentBean.addComment()}" value="AddComment" />
+ 
+      
+
+     
+
+</h:panelGrid>
+
+
+
+
+</h:form>
+
+     
+	 </ui:define>
+ 
+</ui:composition>
+	
