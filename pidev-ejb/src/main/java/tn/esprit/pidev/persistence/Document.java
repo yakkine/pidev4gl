@@ -13,21 +13,21 @@ public class Document {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	private String path;
-	private String size;
 	private String name;
 	private Date datesubmit;
+	private etat etat;
 	
 	
 	@ManyToOne
 	private User user;
 	
-	public Document(int id, String path, String size, String name, Date datesubmit) {
+	public Document(int id, String path, String name, Date datesubmit,etat etat) {
 		super();
 		this.id = id;
-		this.path = path;
-		this.size = size;
+		this.path = path;		
 		this.name = name;
 		this.datesubmit = datesubmit;
+		this.etat=etat;
 	}
 	public Document() {
 		super();
@@ -44,12 +44,8 @@ public class Document {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	public String getSize() {
-		return size;
-	}
-	public void setSize(String size) {
-		this.size = size;
-	}
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -67,6 +63,12 @@ public class Document {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public etat getEtat() {
+		return etat;
+	}
+	public void setEtat(etat etat) {
+		this.etat = etat;
 	}
 	
 	
