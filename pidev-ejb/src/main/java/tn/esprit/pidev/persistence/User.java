@@ -3,6 +3,7 @@ package tn.esprit.pidev.persistence;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,7 +21,9 @@ public class User {
     private int id;
 	private String lastname;
 	private String firstname;
+	
 	private String email;
+	
 	private String cin;
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -32,10 +35,8 @@ public class User {
 	private boolean isValid;
 	@OneToMany (mappedBy="user")
 	private List <Document> documents;
-	@OneToMany (mappedBy="sender")
-	private List <Mail> mailsent;
-	@OneToMany (mappedBy="receiver")
-	private List <Mail> mailreceived;
+	@OneToMany (mappedBy="user")
+	private List <Mail> mails;
 	@OneToMany (mappedBy="user")
 	private List <Task> tasks;
 	
@@ -129,6 +130,15 @@ public class User {
 		this.salaire = salaire;
 		this.isValid = isValid;
 		this.id = id;
+	}
+
+
+
+
+	public User(String cin, String password,Integer id) {
+		this.cin=cin;
+		this.password=password;
+		this.id=id;
 	}
 
 
@@ -305,7 +315,16 @@ public class User {
 
 
 
-	
+	public List<Mail> getMails() {
+		return mails;
+	}
+
+
+
+
+	public void setMails(List<Mail> mails) {
+		this.mails = mails;
+	}
 
 
 
@@ -338,37 +357,6 @@ public class User {
 
 
 
-	public List<Mail> getMailsent() {
-		return mailsent;
-	}
-
-
-
-
-	public void setMailsent(List<Mail> mailsent) {
-		this.mailsent = mailsent;
-	}
-
-
-
-
-	public List<Mail> getMailreceived() {
-		return mailreceived;
-	}
-
-
-
-
-	public void setMailreceived(List<Mail> mailreceived) {
-		this.mailreceived = mailreceived;
-	}
-
-
-
-
-	public boolean isValid() {
-		return isValid;
-	}
 
 
 
