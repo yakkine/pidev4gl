@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import tn.esprit.pidev.persistence.Task;
 @Entity
 public class Alert {
 	@Id

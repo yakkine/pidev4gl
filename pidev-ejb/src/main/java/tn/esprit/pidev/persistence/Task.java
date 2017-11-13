@@ -1,5 +1,6 @@
 package tn.esprit.pidev.persistence;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -10,19 +11,30 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 
 @Entity
-public class Task {
+public class Task implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String description;
+	private String state;
+	@Temporal(TemporalType.DATE)
+	@Future
 	private Date deadline;
+	
 	@OneToOne
 	private Alert alert;
 	@ManyToOne
 	private User user;
+	
+	
+	
+	
 	public Task(int id, String name, String description, Date deadline) {
 		super();
 		this.id = id;
@@ -68,6 +80,18 @@ public class Task {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Task(String name, String description, Date deadline) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.deadline = deadline;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	
