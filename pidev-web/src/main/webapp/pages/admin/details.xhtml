@@ -246,22 +246,25 @@
                 <h:outputText value="#{mailBean.sender.email}" style="margin-right:60"/>
            </h:column><br/><br/>
            <h:column >
-                <h:outputText value="From : " style="margin-right:50"/>
+                <h:outputText value="From    : " style="margin-right:50"/>
                 <h:outputText value="#{mailBean.receiver.email}" style="margin-left:40"/>
            </h:column><br/><br/>
            <h:column>
-                <h:outputText value="objet:" style="margin-right:50"/>
+                <h:outputText value="objet   :" style="margin-right:50"/>
                 <h:outputText  value="#{mailBean.subject}" style="margin-left:47" />
            </h:column> <br/><br/>
            <h:column>
-                <h:outputText value="date" style="margin-right:50" />
+                <h:outputText value="date    :" style="margin-right:50" />
                  <h:outputText  value="#{mailBean.sentdate}" style="margin-left:47" />
            </h:column> <br/><br/>
              <h:column>
-                <h:outputText value="Content :" style="margin-right:50"/>
+                <h:outputText value="Content   :" style="margin-right:50"/>
                 <h:outputText value="#{mailBean.context}" style="margin-left:25"/>
            </h:column> <br/><br/><br/><br/><br/>
-                   
+           <h:column>
+           <h:outputText value="file     :" style="margin-right:50"/>
+           <h:graphicImage value="#{mailBean.path}" />
+             </h:column> <br/><br/>      
  
                
 

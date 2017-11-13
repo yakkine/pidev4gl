@@ -16,6 +16,7 @@ public class Mail {
 	private String subject;
 	private Date sentdate;
 	private String context;
+	private String path;
 	@ManyToOne
 	private User receiver;
 	@ManyToOne
@@ -29,6 +30,15 @@ public class Mail {
 		this.context = context;
 		this.receiver = receiver;
 		this.sender = sender;
+	}
+	public Mail(String subject, Date sentdate, String context, User receiver, User sender,String path) {
+		super();
+		this.subject = subject;
+		this.sentdate = sentdate;
+		this.context = context;
+		this.receiver = receiver;
+		this.sender = sender;
+		this.path=path;
 	}
 
 	public Mail() {
@@ -92,6 +102,12 @@ public class Mail {
 	}
 	public void setSender(User sender) {
 		this.sender = sender;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 	

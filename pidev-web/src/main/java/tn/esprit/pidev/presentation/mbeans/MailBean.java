@@ -32,6 +32,7 @@ public class MailBean {
 		private Part file;
 		private String x;
 		private Mail m;
+		private String path;
 		
 		public String navigateto;
 		
@@ -45,7 +46,7 @@ public class MailBean {
 		 public void addmail(){
 			 sender=mailservice.getUserById(1);
 			 receiver=mailservice.getUserByMail(receivermail);
-			 mailservice.ajoutermail( new Mail(subject,new Date(),context, receiver,sender));
+			 mailservice.ajoutermail( new Mail(subject,new Date(),context, receiver,sender,x));
 			   
 		   }
 		 public List<Mail> getMailsent(){
@@ -157,6 +158,25 @@ public class MailBean {
 		
 		
 		
+		
+		public Mail getM() {
+			return m;
+		}
+		public void setM(Mail m) {
+			this.m = m;
+		}
+		public String getPath() {
+			return path;
+		}
+		public void setPath(String path) {
+			this.path = path;
+		}
+		public String getNavigateto() {
+			return navigateto;
+		}
+		public void setNavigateto(String navigateto) {
+			this.navigateto = navigateto;
+		}
 		public Part getFile() {
 			return file;
 		}
@@ -191,7 +211,7 @@ public class MailBean {
 		
 		public void save() throws IOException {
 			file.write("C:\\Users\\Kochbati Yakine\\JavaEE\\pidev\\pidev-web\\src\\main\\webapp\\dsi\\"+getFileName(file));
-		    	/* x="C:\\Users\\Kochbati Yakine\\JavaEE\\pidev\\pi-web\\src\\main\\webapp\\DSI\\"+getFileName(file);*/
+		    	x="C:\\Users\\Kochbati Yakine\\JavaEE\\pidev\\pidev-web\\src\\main\\webapp\\dsi\\"+getFileName(file);
 		   
 		}
 		
